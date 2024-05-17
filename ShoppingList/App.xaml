@@ -1,0 +1,36 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ShoppingList"
+             x:Class="ShoppingList.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <!--<Color x:Key="PageBackgroundColor">#3B3B3B</Color>
+            <Color x:Key="FrameBorderColor">#CCCCCC</Color>
+            <Color x:Key="FrameBackgroundColor">#A9A9A9</Color>
+            <Color x:Key="ButtonBackgroundColor">#BFBFBF</Color>
+            <Color x:Key="ButtonTextColor">#FFFFFF</Color>
+            <Color x:Key="TextColor">#FFFFFF</Color>
+            <Color x:Key="ButtonBackgroundColorTransparent">#A9A9A9</Color>-->
+            <Color x:Key="PageBackgroundColor">#FFE5B4</Color>
+            <!-- Light Peach -->
+            <Color x:Key="FrameBorderColor">#D2A679</Color>
+            <!-- Warm Sand -->
+            <Color x:Key="FrameBackgroundColor">#FFDAB9</Color>
+            <!-- Peach Puff -->
+            <Color x:Key="ButtonBackgroundColor">#FFB347</Color>
+            <!-- Darker Peach -->
+            <Color x:Key="ButtonTextColor">#4B3B30</Color>
+            <!-- Deep Brown -->
+            <Color x:Key="TextColor">#4B3B30</Color>
+            <!-- Deep Brown -->
+            <Color x:Key="ButtonBackgroundColorTransparent">#FFDAB9</Color>
+            <!-- Peach Puff -->
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

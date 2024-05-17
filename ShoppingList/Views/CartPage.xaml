@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingList.Views.CartPage"
+             Title="Cart"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <Grid Padding="20" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Cart"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.Row="0"
+               Margin="0, 10"/>
+
+        <Frame Padding="10" 
+               CornerRadius="8" 
+               BorderColor="{DynamicResource FrameBorderColor}" 
+               BackgroundColor="{DynamicResource FrameBackgroundColor}" 
+               Grid.Row="1">
+            <ListView x:Name="CartListView" ItemsSource="{Binding Cart}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
+                                <!--<Button Text="Delete" 
+                                        Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CartListView}}" 
+                                        CommandParameter="{Binding .}" 
+                                        BackgroundColor="Transparent" 
+                                        TextColor="Red" 
+                                        Padding="5"/>-->
+                                <ImageButton Source="delete_resized.png"
+                                                 Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CartListView}}" 
+                                                 CommandParameter="{Binding .}" 
+                                                 BackgroundColor="Transparent"
+                                                 WidthRequest="24"
+                                                 HeightRequest="24"
+                                                 Padding="5" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </Grid>
+</ContentPage>

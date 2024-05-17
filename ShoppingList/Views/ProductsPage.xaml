@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingList.Views.ProductsPage"
+             Title="Products"
+              NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+    <Grid Padding="20" RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Product List"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.Row="0"
+               Margin="0, 10"
+               TextColor="{DynamicResource TextColor}"/>
+
+        <Frame Padding="10" 
+               CornerRadius="8" 
+               BorderColor="{DynamicResource FrameBorderColor}" 
+               BackgroundColor="{DynamicResource FrameBackgroundColor}" 
+               Grid.Row="1">
+            <ListView x:Name="ProductsListView" ItemsSource="{Binding Products}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="10">
+                                <Label Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="StartAndExpand"  TextColor="{DynamicResource TextColor}"/>
+                                <!--<Button Text="Delete"
+                                        Command="{Binding BindingContext.DeleteCommand, Source={x:Reference ProductsListView}}" 
+                                        CommandParameter="{Binding .}" 
+                                        BackgroundColor="{DynamicResource ButtonBackgroundColorTransparent}" 
+                                        TextColor="Red" 
+                                        Padding="5">
+                                </Button>
+                                <Button Text="Add to Cart" 
+                                        Command="{Binding BindingContext.AddToCartCommand, Source={x:Reference ProductsListView}}" 
+                                        CommandParameter="{Binding .}" 
+                                        BackgroundColor="{DynamicResource ButtonBackgroundColorTransparent}"
+                                        TextColor="Green" 
+                                        Padding="5">
+                                </Button>-->
+                                <ImageButton Source="delete_resized.png"
+                                                 Command="{Binding BindingContext.DeleteCommand, Source={x:Reference ProductsListView}}" 
+                                                 CommandParameter="{Binding .}" 
+                                                 BackgroundColor="Transparent"
+                                                 WidthRequest="24"
+                                                 HeightRequest="24"
+                                                 Padding="5" />
+                                <ImageButton Source="addcart_resized.png"
+                                                 Command="{Binding BindingContext.AddToCartCommand, Source={x:Reference ProductsListView}}" 
+                                                 CommandParameter="{Binding .}" 
+                                                 BackgroundColor="Transparent"
+                                                 WidthRequest="24"
+                                                 HeightRequest="24"
+                                                 Padding="5" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+
+        <!--<StackLayout Orientation="Horizontal" Spacing="10" Grid.Row="2" HorizontalOptions="Center">
+            <Button Text="Add Product" 
+                    Command="{Binding AddProductCommand}" 
+                    FontSize="18" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}" 
+                    TextColor="{DynamicResource ButtonTextColor}" 
+                    Padding="10"/>
+            <Button Text="Open Cart" 
+                    Command="{Binding OpenCartCommand}" 
+                    FontSize="18" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}" 
+                    TextColor="{DynamicResource ButtonTextColor}" 
+                    Padding="10"/>
+        </StackLayout>-->
+        <Grid Grid.Row="2" VerticalOptions="EndAndExpand" ColumnSpacing="10" HorizontalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Text="Add Product" 
+                    Command="{Binding AddProductCommand}" 
+                    FontSize="18" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}" 
+                    TextColor="{DynamicResource ButtonTextColor}" 
+                    Padding="10"
+                    Grid.Column="0"
+                    HorizontalOptions="FillAndExpand"/>
+            <Button Text="Open Cart" 
+                    Command="{Binding OpenCartCommand}" 
+                    FontSize="18" 
+                    BackgroundColor="{DynamicResource ButtonBackgroundColor}" 
+                    TextColor="{DynamicResource ButtonTextColor}" 
+                    Padding="10"
+                    Grid.Column="1"
+                    HorizontalOptions="FillAndExpand"/>
+        </Grid>
+    </Grid>
+</ContentPage>
