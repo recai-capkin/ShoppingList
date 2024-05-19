@@ -47,20 +47,21 @@
                                         TextColor="Green" 
                                         Padding="5">
                                 </Button>-->
-                                <ImageButton Source="delete_resized.png"
+                                <ImageButton Source="blackdelete.png"
                                                  Command="{Binding BindingContext.DeleteCommand, Source={x:Reference ProductsListView}}" 
                                                  CommandParameter="{Binding .}" 
                                                  BackgroundColor="Transparent"
                                                  WidthRequest="52"
                                                  HeightRequest="52"
                                                  Padding="5" />
-                                <ImageButton Source="addcart_resized.png"
+                                <ImageButton Source="blackaddcart.png"
                                                  Command="{Binding BindingContext.AddToCartCommand, Source={x:Reference ProductsListView}}" 
                                                  CommandParameter="{Binding .}" 
                                                  BackgroundColor="Transparent"
-                                                 WidthRequest="52"
-                                                 HeightRequest="52"
-                                                 Padding="5" />
+                                                 WidthRequest="59"
+                                                 HeightRequest="54"
+                                                 Padding="5"
+                                             Aspect="Fill"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -87,8 +88,25 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+            <ImageButton Source="blackaddlistitem.png" 
+                 Command="{Binding AddProductCommand}" 
+                  BackgroundColor="Transparent"
+                 Padding="10"
+                 Grid.Column="0"
+                 WidthRequest="128"
+                 HeightRequest="128"
+                 HorizontalOptions="FillAndExpand"/>
 
-            <Button Text="Add Product" 
+            <ImageButton Source="gotocart.png" 
+                 Command="{Binding OpenCartCommand}" 
+                 BackgroundColor="Transparent"
+                 Padding="10"
+                 Grid.Column="1"
+                 WidthRequest="128"
+                 HeightRequest="128"
+                 HorizontalOptions="FillAndExpand"/>
+
+            <!--<Button Text="Add Product" 
                     Command="{Binding AddProductCommand}" 
                     FontSize="18" 
                     BackgroundColor="{DynamicResource ButtonBackgroundColor}" 
@@ -103,7 +121,7 @@
                     TextColor="{DynamicResource ButtonTextColor}" 
                     Padding="10"
                     Grid.Column="1"
-                    HorizontalOptions="FillAndExpand"/>
+                    HorizontalOptions="FillAndExpand"/>-->
         </Grid>
     </Grid>
 </ContentPage>

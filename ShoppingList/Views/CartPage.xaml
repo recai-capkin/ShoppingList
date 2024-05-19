@@ -37,12 +37,12 @@
                                         BackgroundColor="Transparent" 
                                         TextColor="Red" 
                                         Padding="5"/>-->
-                                <ImageButton Source="delete_resized.png"
+                                <ImageButton Source="blackdelete.png"
                                                  Command="{Binding BindingContext.DeleteCommand, Source={x:Reference CartListView}}" 
                                                  CommandParameter="{Binding .}" 
                                                  BackgroundColor="Transparent"
-                                                 WidthRequest="24"
-                                                 HeightRequest="24"
+                                                 WidthRequest="52"
+                                                 HeightRequest="52"
                                                  Padding="5" />
                             </StackLayout>
                         </ViewCell>

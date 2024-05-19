@@ -20,7 +20,8 @@
                VerticalOptions="Center"
                Grid.Row="0" TextColor="{DynamicResource TextColor}"/>
 
-        <Frame Padding="10" CornerRadius="12" BorderColor="{DynamicResource FrameBorderColor}" BackgroundColor="{DynamicResource FrameBackgroundColor}" Grid.Row="1">
+        <Frame Padding="10" CornerRadius="12" BorderColor="{DynamicResource FrameBorderColor}" BackgroundColor="{DynamicResource FrameBackgroundColor}" Grid.Row="1"
+                >
             <StackLayout>
                 <Entry x:Name="ProductNameEntry" 
                        Placeholder="Enter product name" 
@@ -30,11 +31,15 @@
                 
             </StackLayout>
         </Frame>
-        <Button Text="Add Product" 
+            
+            <Button
                         FontSize="18" 
                         BackgroundColor="{DynamicResource ButtonBackgroundColor}" 
                         TextColor="{DynamicResource ButtonTextColor}" 
                         Clicked="OnAddProduct"
+                ImageSource="add_resized.png"
+                MaximumHeightRequest="70"
+                MinimumHeightRequest="70"
                 Grid.Row="2" 
                 VerticalOptions="End"/>
         </StackLayout>

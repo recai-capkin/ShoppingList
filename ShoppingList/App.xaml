@@ -16,20 +16,17 @@
             <Color x:Key="ButtonTextColor">#FFFFFF</Color>
             <Color x:Key="TextColor">#FFFFFF</Color>
             <Color x:Key="ButtonBackgroundColorTransparent">#A9A9A9</Color>-->
+            
             <Color x:Key="PageBackgroundColor">#FFE5B4</Color>
-            <!-- Light Peach -->
             <Color x:Key="FrameBorderColor">#D2A679</Color>
-            <!-- Warm Sand -->
             <Color x:Key="FrameBackgroundColor">#FFDAB9</Color>
-            <!-- Peach Puff -->
             <Color x:Key="ButtonBackgroundColor">#FFB347</Color>
-            <!-- Darker Peach -->
             <Color x:Key="ButtonTextColor">#4B3B30</Color>
-            <!-- Deep Brown -->
             <Color x:Key="TextColor">#4B3B30</Color>
-            <!-- Deep Brown -->
             <Color x:Key="ButtonBackgroundColorTransparent">#FFDAB9</Color>
-            <!-- Peach Puff -->
+
+
+           
 
         </ResourceDictionary>
     </Application.Resources>

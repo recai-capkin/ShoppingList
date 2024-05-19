@@ -42,7 +42,7 @@
     <AndroidPackageFormat>apk</AndroidPackageFormat>
     
   </PropertyGroup>
-	<PropertyGroup  Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 		<AndroidKeyStore>True</AndroidKeyStore>
 		<AndroidSigningStorePass>123456</AndroidSigningStorePass>
 		<AndroidSigningKeyAlias>my-key-alias</AndroidSigningKeyAlias>
@@ -74,8 +74,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\add.png" />
 	  <None Remove="Resources\Images\addcart_resized.png" />
+	  <None Remove="Resources\Images\add_resized.png" />
+	  <None Remove="Resources\Images\blackaddcart.png" />
+	  <None Remove="Resources\Images\blackaddlistitem.png" />
+	  <None Remove="Resources\Images\blackdelete.png" />
 	  <None Remove="Resources\Images\delete_resized.png" />
+	  <None Remove="Resources\Images\gotocart.png" />
 	</ItemGroup>
 
 	<ItemGroup>
