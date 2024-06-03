@@ -25,21 +25,30 @@ namespace ShoppingList.ViewModels
 
         public void AddToCart(Product product)
         {
-            Cart.Add(product);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Cart.Add(product);
+            });
             Task.Run(async () => await SaveCart());
         }
         private void OnDelete(Product product)
         {
-            Cart.Remove(product);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Cart.Remove(product);
+            });
             Task.Run(async () => await SaveCart());
         }
         private async Task LoadCart()
         {
             var cartItems = await FileHelper.ReadFromFileAsync<Product>(CartFileName);
-            foreach (var item in cartItems)
+            MainThread.BeginInvokeOnMainThread(() =>
             {
-                Cart.Add(item);
-            }
+                foreach (var item in cartItems)
+                {
+                    Cart.Add(item);
+                }
+            });
         }
         private async Task SaveCart()
         {

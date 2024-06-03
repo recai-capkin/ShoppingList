@@ -42,7 +42,10 @@ namespace ShoppingList.ViewModels
             var products = await FileHelper.ReadFromFileAsync<Product>(FileName);
             foreach (var product in products)
             {
-                Products.Add(product);
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Products.Add(product);
+                });
             }
         }
 
@@ -54,13 +57,21 @@ namespace ShoppingList.ViewModels
 
         private async Task OnDelete(Product product)
         {
-            Products.Remove(product);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Products.Remove(product);
+            });
             await SaveProducts();
         }
 
         private void OnAddToCart(Product product)
         {
             _cartViewModel.AddToCart(product);
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                var productsPage = Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault() as ProductsPage;
+                productsPage?.ShowToast($"{product.Name} sepete eklendi");
+            });
         }
 
         public async Task SaveProducts()

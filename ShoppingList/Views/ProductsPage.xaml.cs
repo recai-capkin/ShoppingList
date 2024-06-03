@@ -14,4 +14,8 @@ public partial class ProductsPage : ContentPage
         base.OnAppearing();
         NavigationPage.SetHasNavigationBar(this, false);
     }
+    public async void ShowToast(string message)
+    {
+        await ToastNotification.Show(message);
+    }
 }
