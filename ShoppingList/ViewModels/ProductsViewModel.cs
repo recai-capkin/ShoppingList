@@ -23,6 +23,7 @@ namespace ShoppingList.ViewModels
         public ICommand DeleteCommand { get; }
         public ICommand AddToCartCommand { get; }
         public ICommand OpenCartCommand { get; }
+        public ICommand RefreshListCommand { get; }
 
         public ProductsViewModel(CartViewModel cartViewModel)
         {
@@ -32,11 +33,18 @@ namespace ShoppingList.ViewModels
             DeleteCommand = new Command<Product>(async (product) => await OnDelete(product));
             AddToCartCommand = new Command<Product>((product) => OnAddToCart(product));
             OpenCartCommand = new Command(async () => await OnOpenCart());
+            RefreshListCommand = new Command(() => RefreshList());
 
             // Uygulama başladığında verileri yükle
             Task.Run(async () => await LoadProducts());
         }
-
+        private void RefreshList()
+        {
+            // This will force the ObservableCollection to notify the UI of changes
+            var products = new ObservableCollection<Product>(Products);
+            Products = products;
+            OnPropertyChanged(nameof(Products));
+        }
         private async Task LoadProducts()
         {
             var products = await FileHelper.ReadFromFileAsync<Product>(FileName);
@@ -62,6 +70,7 @@ namespace ShoppingList.ViewModels
                 Products.Remove(product);
             });
             await SaveProducts();
+            RefreshList();
         }
 
         private void OnAddToCart(Product product)

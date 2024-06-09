@@ -15,14 +15,22 @@ namespace ShoppingList.ViewModels
         private const string CartFileName = "cart.json";
         public ObservableCollection<Product> Cart { get; set; }
         public ICommand DeleteCommand { get; }
+        public ICommand RefreshListCommand { get; }
 
         public CartViewModel()
         {
             Cart = new ObservableCollection<Product>();
             DeleteCommand = new Command<Product>(OnDelete);
+            RefreshListCommand = new Command(() => RefreshList());
             Task.Run(async () => await LoadCart());
         }
-
+        private void RefreshList()
+        {
+            // This will force the ObservableCollection to notify the UI of changes
+            var carts = new ObservableCollection<Product>(Cart);
+            Cart = carts;
+            OnPropertyChanged(nameof(Cart));
+        }
         public void AddToCart(Product product)
         {
             MainThread.BeginInvokeOnMainThread(() =>
@@ -30,6 +38,7 @@ namespace ShoppingList.ViewModels
                 Cart.Add(product);
             });
             Task.Run(async () => await SaveCart());
+            RefreshList();
         }
         private void OnDelete(Product product)
         {
