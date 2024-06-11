@@ -1,3 +1,4 @@
+﻿using Microsoft.Maui.Layouts;
 using ShoppingList.ViewModels;
 
 namespace ShoppingList.Views;
@@ -16,6 +17,14 @@ public partial class ProductsPage : ContentPage
     }
     public async void ShowToast(string message)
     {
-        await ToastNotification.Show(message);
+        var toast = new ToastNotificationView();
+        AbsoluteLayout.SetLayoutBounds(toast, new Rect(0.5, 0.9, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+        AbsoluteLayout.SetLayoutFlags(toast, AbsoluteLayoutFlags.PositionProportional);
+        MainLayout.Children.Add(toast);  // MainLayout AbsoluteLayout bileşeninin x:Name'dir
+
+        await toast.Show(message);
+
+        // Toast mesajı gösterildikten sonra kaldır
+        MainLayout.Children.Remove(toast);
     }
 }

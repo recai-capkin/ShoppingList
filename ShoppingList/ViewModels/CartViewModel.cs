@@ -33,6 +33,7 @@ namespace ShoppingList.ViewModels
         }
         public void AddToCart(Product product)
         {
+
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 Cart.Add(product);

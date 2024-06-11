@@ -71,15 +71,20 @@ namespace ShoppingList.ViewModels
             });
             await SaveProducts();
             RefreshList();
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                var productsPage = Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault() as ProductsPage;
+                productsPage?.ShowToast($"{product.Name} sepetten silindi.");
+            });
         }
 
-        private void OnAddToCart(Product product)
+        private async void OnAddToCart(Product product)
         {
             _cartViewModel.AddToCart(product);
             MainThread.BeginInvokeOnMainThread(async () =>
             {
                 var productsPage = Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault() as ProductsPage;
-                productsPage?.ShowToast($"{product.Name} sepete eklendi");
+                productsPage?.ShowToast($"{product.Name} sepete eklendi.");
             });
         }
 

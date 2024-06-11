@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="{DynamicResource PageBackgroundColor}">
 
-    <AbsoluteLayout>
+    <AbsoluteLayout x:Name="MainLayout">
         <Grid Padding="20" RowSpacing="10" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -80,8 +80,5 @@
                              HorizontalOptions="FillAndExpand"/>
             </Grid>
         </Grid>
-
-        <!-- ToastNotificationView'i AbsoluteLayout içinde en üste yerleştirin -->
-        <local:ToastNotificationView x:Name="ToastNotification" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" AbsoluteLayout.LayoutFlags="PositionProportional"/>
     </AbsoluteLayout>
 </ContentPage>
